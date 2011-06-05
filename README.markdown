@@ -30,6 +30,10 @@ These replace your usual Django loaders:
     django.template.loaders.filesystem.Loader
     django.template.loaders.app_directories.Loader
 
+Now simply name your templates with a `.haml` extension and this haml compiler
+will do the rest.  Any templates with other extensions will not be compiled
+with the haml compiler.
+
 Quick Overview
 =========================
 

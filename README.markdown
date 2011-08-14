@@ -1,7 +1,7 @@
-haml and sass (for python)
+haml and scss (for python)
 =================
 
-***Note: sass is currently not implemented, but it's coming***
+***Note: scss is currently not implemented, but it's coming***
 
 There are a few other implementations, but didn't seem to support as many
 features of haml as well as integrating well with typical python template

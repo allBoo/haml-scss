@@ -31,7 +31,7 @@ class AppLoader(DjAppLoader):
     is_usable = True
 
     def load_template_source(self, template_name, template_dirs=None):
-        data, fn = super(FSLoader, self) \
+        data, fn = super(AppLoader, self) \
             .load_template_source(template_name, template_dirs)
 
         if not template_name.endswith('.haml'):

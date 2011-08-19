@@ -12,6 +12,7 @@ setup(
     keywords='haml sass scss django template',
     install_requires=[
         'pyScss>=1.0.8',
+        'regex==0.1.20110524',
     ],
     packages=find_packages(),
     include_package_data=True,

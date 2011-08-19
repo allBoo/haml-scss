@@ -1,8 +1,6 @@
 haml and scss (for python)
 =================
 
-***Note: scss is currently not implemented, but it's coming***
-
 There are a few other implementations, but didn't seem to support as many
 features of haml as well as integrating well with typical python template
 languages.  This was written with Django in mind, but made room for other
@@ -15,8 +13,8 @@ implementation is that this implementation strives to "compile" into a
 different template language and let the underlying template engine (like
 Jinja2 and Django's default) do what they do best.
 
-Django Installation/Setup
-=========================
+Django haml Installation/Setup
+==============================
 
 In `settings.py`, modify `TEMPLATE_LOADERS` like:
 
@@ -33,6 +31,16 @@ These replace your usual Django loaders:
 Now simply name your templates with a `.haml` extension and this haml compiler
 will do the rest.  Any templates with other extensions will not be compiled
 with the haml compiler.
+
+Django scss Installation/Setup
+==============================
+
+In `settings.py`, add:
+
+    INSTALLED_APPS += ('scss_integ', )
+
+This module overrides your usual `runserver` implementation to allow for on
+the fly scss generation.
 
 Quick Overview
 =========================

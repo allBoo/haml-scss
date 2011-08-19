@@ -4,7 +4,7 @@ import os
 setup(
     name='haml-scss',
     version='0.5.1',
-    packages=['haml', ],
+    packages=['haml', 'scss_integ', ],
     author='Dan LaMotte',
     author_email='lamotte85@gmail.com',
     description='haml for python (scss coming soon)',

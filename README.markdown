@@ -13,6 +13,11 @@ implementation is that this implementation strives to "compile" into a
 different template language and let the underlying template engine (like
 Jinja2 and Django's default) do what they do best.
 
+
+As far as the scss implementation goes, it uses pyScss for the heaving lifting
+and has integration for Django.  This also comes packaged with compass scss
+files for ease of use.
+
 Django haml Installation/Setup
 ==============================
 

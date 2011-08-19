@@ -25,6 +25,7 @@ class ScssMediaHandler(AdminMediaHandler):
             resp = serve(request, path[:-4] + '.scss')
             resp.content = Scss().compile(resp.content)
             resp['Content-Length'] = len(resp.content)
+            resp['Content-Type'] = 'text/css'
         return resp
 
     def get_response(self, request):

@@ -1,8 +1,8 @@
 from django.conf import settings
-from django.core.management.commands.runserver import \
-    Command as RunserverCommand
 from django.core.handlers.wsgi import WSGIHandler
-from django.core.servers.basehttp import AdminMediaHandler
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+from django.contrib.staticfiles.management.commands.runserver import \
+    Command as StaticFilesRunserverCommand
 from django.contrib.staticfiles.views import serve
 from django.http import Http404
 
@@ -10,7 +10,7 @@ import os
 
 from scss import Scss
 
-class ScssMediaHandler(AdminMediaHandler):
+class ScssMediaHandler(StaticFilesHandler):
     def __init__(self, *args, **kwargs):
         super(ScssMediaHandler, self).__init__(*args, **kwargs)
 
@@ -18,10 +18,10 @@ class ScssMediaHandler(AdminMediaHandler):
         return path.startswith(settings.STATIC_URL) and path.endswith('.css')
 
     def serve(self, request):
-        path = request.path[len(settings.STATIC_URL):]
         try:
-            resp = serve(request, path)
+            resp = super(ScssMediaHandler, self).serve(request)
         except Http404:
+            path = request.path[len(settings.STATIC_URL):]
             resp = serve(request, path[:-4] + '.scss')
             resp.content = Scss().compile(resp.content)
             resp['Content-Length'] = len(resp.content)
@@ -47,7 +47,7 @@ class ScssMediaHandler(AdminMediaHandler):
             return WSGIHandler.__call__(self, environ, start_response)
         return super(ScssMediaHandler, self).__call__(environ, start_response)
 
-class Command(RunserverCommand):
+class Command(StaticFilesRunserverCommand):
     def get_handler(self, *args, **options):
         handler = super(Command, self).get_handler(*args, **options)
         return ScssMediaHandler(handler, options.get('admin_media_path', ''))

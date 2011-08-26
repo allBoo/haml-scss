@@ -20,6 +20,9 @@ class Command(NoArgsCommand):
             )
 
         for template_dir in settings.TEMPLATE_DIRS:
+            if template_dir.startswith(haml_path):
+                continue
+
             # trick to add proper trailing slash if necessary
             l = len(os.path.join(template_dir + '/', ''))
 

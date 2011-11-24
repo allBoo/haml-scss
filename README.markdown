@@ -95,6 +95,22 @@ Compiles to:
 
     <link href="{{ STATIC_URL }}css/style.css" ref="stylesheet" type="text/css" />
 
+Or with a templatetag:
+
+    %a{href="{% url "page" %}"} link
+
+Compiles to:
+
+    <a href="{% url "page" %}">link</a>
+
+Or a template variable:
+
+    %link{ref="stylesheet", type="text/css", href="{{ STATIC_URL }}css/style.css"}
+
+Compiles to:
+
+    <link href="{{ STATIC_URL }}css/style.css" ref="stylesheet" type="text/css" />
+
 DOCTYPE
 -------
 

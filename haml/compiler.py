@@ -292,6 +292,7 @@ class Compiler(object):
     class ParseError(Exception): pass
 
     re_indent = regex.compile(r'^(?<indent>\s*)')
+    re_only_space = regex.compile(r'^\s*$')
     re_haml = regex.compile(r'''
         ^(?<indent>\s*)
         (?:
@@ -372,7 +373,10 @@ class Compiler(object):
         f = getattr(self, 'filter_%s' % name)
         content = ''
         for last, curr, next in self.parse_iter():
-            if len(curr.m['indent']) <= len(indent):
+            if self.re_only_space.match(curr.line):
+                pass
+
+            elif len(curr.m['indent']) <= len(indent):
                 self.parse_iter_redo_last()
                 break
             content += curr.line
@@ -505,6 +509,12 @@ if '__main__' == __name__:
                 alert("hello world!");
             });
             // hello
+        :javascript
+            $(function() {
+                alert('hello world');
+
+                alert('hello again');
+            });
         %script{type='text/javascript'}
             var a = 1;
             // hello

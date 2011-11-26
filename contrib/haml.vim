@@ -95,7 +95,7 @@ syn match   hamlClass "\%(\w\|-\)\+" contained nextgroup=@hamlComponent
 syn match   hamlId    "\%(\w\|-\)\+" contained nextgroup=@hamlComponent
 syn region  hamlDocType start="^\s*!!!" end="$"
 
-syn region  hamlRuby   matchgroup=hamlRubyOutputChar start="[=~]" end="$" contained contains=@hamlRubyTop keepend
+syn region  hamlRuby   matchgroup=hamlRubyOutputChar start="[=~]" end="$" contained contains=djangoFilter,djangoArgument,djangoVarError keepend
 syn region  hamlRuby   matchgroup=hamlRubyChar       start="-"    end="$" contained contains=djangoStatement,djangoFilter,djangoArgument,djangoTagError keepend
 syn match   hamlPlainChar "\\" contained
 syn region hamlInterpolatable matchgroup=hamlInterpolatableChar start="==" end="$" keepend contained contains=hamlInterpolation

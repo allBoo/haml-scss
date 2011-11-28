@@ -404,7 +404,6 @@ class Compiler(object):
         curr.line_stripped = curr.line.rstrip('\r\n')
         curr.m = self.re_haml.match(curr.line)
 
-        count = 0
         while curr.line:
             if self.__redo_last:
                 self.__redo_last = False
@@ -415,9 +414,6 @@ class Compiler(object):
                 next.line_stripped = next.line.rstrip('\r\n')
                 next.m = self.re_haml.match(next.line_stripped)
 
-            count += 1
-            if count > 100:
-                break
             yield last, curr, next
 
             if not self.__redo_last:

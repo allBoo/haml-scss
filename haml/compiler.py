@@ -296,14 +296,14 @@ class Compiler(object):
     re_haml = regex.compile(r'''
         ^(?<indent>\s*)
         (?:
-            (?<element>[%.#][a-zA-Z0-9_-]+)+
+            (?<element>[%.#][a-zA-Z0-9_\-]+)+
             (?:{\s*
-                (?:(?<key>[a-zA-Z][a-zA-Z0-9_-]*)
+                (?:(?<key>[a-zA-Z][a-zA-Z0-9_\-]*)
                    \s*=\s*
                    (?<value>[^,]+)
 
                    (?:\s*,\s*
-                      (?<key2>[a-zA-Z][a-zA-Z0-9_-]*)
+                      (?<key2>[a-zA-Z][a-zA-Z0-9_\-]*)
                       \s*=\s*
                       (?<value2>[^,]+)
                    )*

@@ -298,7 +298,7 @@ class Compiler(object):
         (?:
             (?<element>[%.#][a-zA-Z0-9_\-]+)+
             (?:{\s*
-                (?:(?<key>[a-zA-Z][a-zA-Z0-9_\-]*)
+                (?:(?<key>[a-zA-Z][a-zA-Z0-9_\:-]*)
                    \s*=\s*
                    (?<value>("[^"]*"|'[^']*'|[^,])+)
 

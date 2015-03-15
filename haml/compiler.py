@@ -312,7 +312,7 @@ class Compiler(object):
             )?
             (?<consume_around>>)?
             (?<consume_within><)?
-            (?:(?<close>/)|(?<var>=)?(?<content> .*)?)
+            (?:(?<close>/)|(?:\s*\Z)|(?<var>=)?(?<content> .*)?)
         |   (?<filter>:[a-zA-Z][a-zA-Z0-9_-]*)
         |   (?<doctype>!.*)
         |   (?<html_cond_comment>/\[.*\])

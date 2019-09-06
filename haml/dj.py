@@ -1,13 +1,9 @@
-from django.template import TemplateDoesNotExist
 from django.template.loaders.filesystem import Loader as DjFSLoader
 from django.template.loaders.app_directories import Loader as DjAppLoader
 
 from haml.compiler import Compiler
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
+from io import StringIO
 
 class FSLoader(DjFSLoader):
     is_usable = True
